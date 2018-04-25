@@ -1,0 +1,307 @@
+/*================== START ALL STYLES =================*/
+.wrapper-login-register {
+    background-color: #292c3b;
+    padding: 50px;
+}
+.wrapper-login-register .logo-block {
+    text-align: center;
+}
+.tabs-login-register {
+    margin-top: 80px;
+    text-align: center;
+}
+.tabs-login-register ul>li>a {
+    border-radius: 0px 0px 0px 0px;
+}
+.tabs-login-register ul {
+    width: 746px;
+    margin: 0 auto;
+}
+.tabs-login-register ul li {
+    width: 373px;
+    display: inline-block;
+    border: 1px solid #019bdb;
+}
+.tabs-login-register ul li>a {
+    padding: 14px 30px;
+    color: #ffffff;
+    font-size: 2em;
+}
+.tabs-login-register ul li.active>a{
+    background-color: #019bdb;
+}
+.tabs-login-register ul li.active>a:hover {
+    background-color: #019bdb;
+}
+.tabs-login-register ul>li+li {
+    margin-left: 0px;
+}
+
+.tabs-login-register ul li.xdac-login,
+.tabs-login-register ul li.xdac-login>a {
+    border-radius: 0px 46px 46px 0px;
+    -moz-border-radius: 0px 46px 46px 0px;
+    -webkit-border-radius: 0px 46px 46px 0px;
+}
+.tabs-login-register ul li.xdac-register,
+.tabs-login-register ul li.xdac-register>a {
+    border-radius: 46px 0px 0px 46px;
+    -moz-border-radius: 46px 0px 0px 46px;
+    -webkit-border-radius: 46px 0px 0px 46px;
+}
+.tabs-login-register ul li.xdac-login>a:hover,
+.tabs-login-register ul li.xdac-register>a:hover {
+    color: #ffffff;
+}
+.login-register-description {
+    color: #ffffff;
+    margin-top: 40px;
+    margin-bottom: 48px;
+    font-size: 2em;
+}
+
+.xdac-client-form {
+    text-align: center;
+}
+.xdac-client-form input[type=text],
+.xdac-client-form input[type=email],
+.xdac-client-form input[type=password] {
+    width: 746px;
+    height: 90px;
+    background-color: #222836;
+    color: #65686f;
+    border-radius: 46px 46px 46px 46px;
+    -moz-border-radius: 46px 46px 46px 46px;
+    -webkit-border-radius: 46px 46px 46px 46px;
+    border: none;
+    padding-left: 38px;
+    font-size: 1.8em;
+}
+.xdac-client-form input[type=text],
+.xdac-client-form input[type=email],
+.xdac-client-form input[type=password] {
+    margin-bottom: 30px;
+}
+.xdac-client-form input[type=text]::-webkit-input-placeholder,
+.xdac-client-form input[type=email]::-webkit-input-placeholder,
+.xdac-client-form input[type=password]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #65686f;
+    font-size: 1.2em;
+}
+.xdac-client-form input[type=text]::-moz-placeholder,
+.xdac-client-form input[type=email]::-moz-placeholder,
+.xdac-client-form input[type=password]::-moz-placeholder { /* Firefox 19+ */
+    color: #65686f;
+    font-size: 1.2em;
+}
+.xdac-client-form input[type=text]:-ms-input-placeholder,
+.xdac-client-form input[type=password]:-ms-input-placeholder,
+.xdac-client-form input[type=email]:-ms-input-placeholder { /* IE 10+ */
+    color: #65686f;
+    font-size: 1.2em;
+}
+.xdac-client-form input[type=text]:-moz-placeholder,
+.xdac-client-form input[type=password]:-moz-placeholder,
+.xdac-client-form input[type=email]:-moz-placeholder { /* Firefox 18- */
+    color: #65686f;
+    font-size: 1.2em;
+}
+.xdac-client-form input[type=submit].xdac-submit-form {
+    width: 746px;
+    height: 78px;
+    color: #ffffff;
+    font-size: 2em;
+    background-color: #019bdb;
+    border-radius: 46px 46px 46px 46px;
+    -moz-border-radius: 46px 46px 46px 46px;
+    -webkit-border-radius: 46px 46px 46px 46px;
+}
+/*================== END ALL STYLES =================*/
+/*================== START RECOVER PAGE =================*/
+.recover-submit {
+    margin-top: 52px;
+}
+/*================== END RECOVER PAGE =================*/
+/*================== START REGISTER PAGE =================*/
+.xdac-register-terms {
+    margin: 0 auto;
+    width: 746px;
+    padding-top: 29px;
+    font-size: 1.75em;
+    line-height: 1.3em;
+}
+.xdac-register-terms a {
+    color: #65686f;
+    text-decoration: underline;
+}
+/*================== END REGISTER PAGE =================*/
+/*================== START LOGIN PAGE =================*/
+.xdac-client-form .remember {
+    width: 746px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 18px;
+    padding-bottom: 42px;
+}
+.xdac-client-form .remember .remember-me-checkbox {
+    position: relative;
+}
+.xdac-client-form .remember input[type=checkbox] {
+    width: 34px;
+    height: 34px;
+}
+.xdac-client-form .remember .xdac-remember-me {
+    font-size: 2em;
+    color: #65686f;
+    position: relative;
+    padding-left: 66px;
+}
+.xdac-client-form .remember .xdac-forgot>a{
+    font-size: 2em;
+    color: #65686f;
+    text-decoration: underline;
+    border-left: 2px solid #65686f;
+    padding-left: 24px;
+    margin-left: 24px;
+}
+
+/*==========================================*/
+/*==========================================*/
+/*==========================================*/
+/* Made by Jimmy Gillam */
+/* Checkmark style starts */
+@-moz-keyframes dothabottomcheck {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 10px;
+    }
+}
+@-webkit-keyframes dothabottomcheck {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 10px;
+    }
+}
+@keyframes dothabottomcheck {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 10px;
+    }
+}
+@keyframes dothatopcheck {
+    0% {
+        height: 0;
+    }
+    50% {
+        height: 0;
+    }
+    100% {
+        height: 30px;
+    }
+}
+@-webkit-keyframes dothatopcheck {
+    0% {
+        height: 0;
+    }
+    50% {
+        height: 0;
+    }
+    100% {
+        height: 30px;
+    }
+}
+@-moz-keyframes dothatopcheck {
+    0% {
+        height: 0;
+    }
+    50% {
+        height: 0;
+    }
+    100% {
+        height: 30px;
+    }
+}
+input[type="checkbox"] {
+    display: none;
+}
+.xdac-remember-check-box {
+    height: 34px;
+    width: 34px;
+    background-color: transparent;
+    border: 2px solid #019bdb;
+    border-radius: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: inline-block;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-transition: border-color ease 0.2s;
+    -o-transition: border-color ease 0.2s;
+    -webkit-transition: border-color ease 0.2s;
+    transition: border-color ease 0.2s;
+    cursor: pointer;
+}
+.xdac-remember-check-box::before, .xdac-remember-check-box::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: absolute;
+    height: 0;
+    width: 5px;
+    background-color: #34b93d;
+    display: inline-block;
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    border-radius: 5px;
+    content: " ";
+    -webkit-transition: opacity ease 0.5;
+    -moz-transition: opacity ease 0.5;
+    transition: opacity ease 0.5;
+}
+.xdac-remember-check-box::before {
+    top: 28px;
+    left: 14px;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+.xdac-remember-check-box::after {
+    top: 18px;
+    left: 4px;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+input[type="checkbox"]:checked + .xdac-remember-check-box, .xdac-remember-check-box.checked {
+    border-color: #34b93d;
+}
+input[type="checkbox"]:checked + .xdac-remember-check-box::after, .xdac-remember-check-box.checked::after {
+    height: 10px;
+    -moz-animation: dothabottomcheck 0.1s ease 0s forwards;
+    -o-animation: dothabottomcheck 0.1s ease 0s forwards;
+    -webkit-animation: dothabottomcheck 0.1s ease 0s forwards;
+    animation: dothabottomcheck 0.1s ease 0s forwards;
+}
+input[type="checkbox"]:checked + .xdac-remember-check-box::before, .xdac-remember-check-box.checked::before {
+    height: 30px;
+    -moz-animation: dothatopcheck 0.2s ease 0s forwards;
+    -o-animation: dothatopcheck 0.2s ease 0s forwards;
+    -webkit-animation: dothatopcheck 0.2s ease 0s forwards;
+    animation: dothatopcheck 0.2s ease 0s forwards;
+}
+/*================== END LOGIN PAGE =================*/
