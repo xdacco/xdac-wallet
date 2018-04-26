@@ -74,6 +74,77 @@ if( !class_exists('XdacClient') ):
             $this->init_hooks();
 
             do_action( 'xdac_client_loaded' );
+
+            add_action( 'init', array( $this, 'process_post') );
+
+        }
+
+        public function process_post(){
+            if(!empty($_POST['xdac_client_form'])){
+                switch ($_POST['xdac_client_form']){
+                    case 'register':
+                        $this->registration();
+                        break;
+                    case 'login':
+                        $this->login();
+                        break;
+                    case 'recover':
+                        $this->recover();
+                        break;
+                }
+            }
+        }
+
+        public function registration(){
+
+            $first_name =   sanitize_text_field( $_POST['fname'] );
+            $last_name  =   sanitize_text_field( $_POST['lname'] );
+            $email      =   sanitize_email( $_POST['email'] );
+            $password   =   esc_attr( $_POST['password'] );
+            $referral   =   sanitize_text_field( $_POST['referral'] );
+
+            if($this->registration_validation($email, $password)){
+                $userdata = array(
+                    'user_login'    =>   sanitize_user($email),
+                    'user_email'    =>   $email,
+                    'user_pass'     =>   $password,
+                    'first_name'    =>   $first_name,
+                    'last_name'     =>   $last_name
+                );
+                $user = wp_insert_user( $userdata );
+                if($user){
+                    update_user_meta( $user, 'referal_id', $referral);
+                    wp_redirect(get_site_url(null, 'test-plugin-login'));
+                }
+            }
+        }
+
+        public function registration_validation($email, $password){
+
+            global $reg_errors;
+            $reg_errors = new WP_Error();
+
+            if ( strlen( $password ) < 6 ) {
+                $reg_errors->add( 'password', 'Password length must be greater than 6' );
+            }
+
+            if ( !is_email( $email ) ) {
+                $reg_errors->add( 'email_invalid', 'Email is not valid' );
+            }
+
+            if ( email_exists( $email ) ) {
+                $reg_errors->add( 'email', 'Email Already in use' );
+            }
+
+            return count($reg_errors->get_error_messages()) == 0;
+        }
+
+        protected function login(){
+
+        }
+
+        protected function recover(){
+
         }
 
         /**
@@ -104,8 +175,24 @@ if( !class_exists('XdacClient') ):
         private function init_hooks() {
             add_action('admin_notices', array( $this, 'admin_notices' ), 15 );
             add_action('plugins_loaded', array($this, 'init'), 1);
+
+            add_filter( 'page_template', array($this, 'xdac_page_template'), 1);
         }
 
+
+        function xdac_page_template( $page_template )
+        {
+            if ( is_page( 'test-plugin-register' ) ) {
+                $page_template = XDAC_ABSPATH.'/templates/register.php';
+            }
+            if ( is_page( 'test-plugin-login' ) ) {
+                $page_template = XDAC_ABSPATH.'/templates/login.php';
+            }
+            if ( is_page( 'test-plugin-recover' ) ) {
+                $page_template = XDAC_ABSPATH.'/templates/recover.php';
+            }
+            return $page_template;
+        }
 
         /**
          * Define CDT Constants.
@@ -126,7 +213,7 @@ if( !class_exists('XdacClient') ):
             if( is_admin() ) {
             }
 
-            add_action("wp_enqueue_scripts", array($this, 'register_scripts'));
+            //add_action("wp_enqueue_scripts", array($this, 'register_scripts'));
 
             add_shortcode( 'xdac-client-register', array($this, 'xdac_client_register'));
             add_shortcode( 'xdac-client-login', array($this, 'xdac_client_login'));

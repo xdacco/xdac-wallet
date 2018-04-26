@@ -1,10 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #292c3b;
+}
+
 /*================== START ALL STYLES =================*/
 .wrapper-login-register {
-    background-color: #292c3b;
     padding: 50px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
 }
 .wrapper-login-register .logo-block {
     text-align: center;
+}
+.wrapper-login-register .logo-block img {
+    width: 250px;
 }
 .tabs-login-register {
     margin-top: 80px;
@@ -14,18 +26,24 @@
     border-radius: 0px 0px 0px 0px;
 }
 .tabs-login-register ul {
-    width: 746px;
+    width: 374px;
     margin: 0 auto;
 }
+/* style from bootstrap */
+.nav-justified>li>a {
+    margin-bottom: 0px;
+}
 .tabs-login-register ul li {
-    width: 373px;
+    width: 187px;
     display: inline-block;
     border: 1px solid #019bdb;
+    float: left;
+    line-height: 45px;
 }
 .tabs-login-register ul li>a {
-    padding: 14px 30px;
+    padding: 0px 30px;
     color: #ffffff;
-    font-size: 2em;
+    font-size: 1em;
 }
 .tabs-login-register ul li.active>a{
     background-color: #019bdb;
@@ -53,11 +71,15 @@
 .tabs-login-register ul li.xdac-register>a:hover {
     color: #ffffff;
 }
+.tabs-login-register ul li.xdac-login:not(.active)>a:hover,
+.tabs-login-register ul li.xdac-register:not(.active)>a:hover {
+    background-color: #292c3b;
+}
 .login-register-description {
     color: #ffffff;
-    margin-top: 40px;
-    margin-bottom: 48px;
-    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 1em;
 }
 
 .xdac-client-form {
@@ -66,8 +88,8 @@
 .xdac-client-form input[type=text],
 .xdac-client-form input[type=email],
 .xdac-client-form input[type=password] {
-    width: 746px;
-    height: 90px;
+    width: 374px;
+    height: 54px;
     background-color: #222836;
     color: #65686f;
     border-radius: 46px 46px 46px 46px;
@@ -75,7 +97,7 @@
     -webkit-border-radius: 46px 46px 46px 46px;
     border: none;
     padding-left: 38px;
-    font-size: 1.8em;
+    font-size: 0.9em;
 }
 .xdac-client-form input[type=text],
 .xdac-client-form input[type=email],
@@ -107,28 +129,34 @@
     font-size: 1.2em;
 }
 .xdac-client-form input[type=submit].xdac-submit-form {
-    width: 746px;
-    height: 78px;
+    width: 374px;
+    height: 56px;
     color: #ffffff;
-    font-size: 2em;
+    font-size: 1em;
     background-color: #019bdb;
     border-radius: 46px 46px 46px 46px;
     -moz-border-radius: 46px 46px 46px 46px;
     -webkit-border-radius: 46px 46px 46px 46px;
+    border: 0;
+}
+
+.xdac-client-errors {
+    color: #d54e21;
 }
 /*================== END ALL STYLES =================*/
 /*================== START RECOVER PAGE =================*/
 .recover-submit {
-    margin-top: 52px;
+    margin-top: 24px;
 }
 /*================== END RECOVER PAGE =================*/
 /*================== START REGISTER PAGE =================*/
 .xdac-register-terms {
     margin: 0 auto;
-    width: 746px;
-    padding-top: 29px;
-    font-size: 1.75em;
-    line-height: 1.3em;
+    width: 374px;
+    padding-top: 20px;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    color: #65686f;
 }
 .xdac-register-terms a {
     color: #65686f;
@@ -137,27 +165,26 @@
 /*================== END REGISTER PAGE =================*/
 /*================== START LOGIN PAGE =================*/
 .xdac-client-form .remember {
-    width: 746px;
+    width: 374px;
     margin: 0 auto;
     position: relative;
-    padding-top: 18px;
-    padding-bottom: 42px;
+    padding-bottom: 30px;
 }
 .xdac-client-form .remember .remember-me-checkbox {
     position: relative;
 }
 .xdac-client-form .remember input[type=checkbox] {
-    width: 34px;
-    height: 34px;
+    width: 16px;
+    height: 16px;
 }
 .xdac-client-form .remember .xdac-remember-me {
-    font-size: 2em;
+    font-size: 1em;
     color: #65686f;
     position: relative;
-    padding-left: 66px;
+    padding-left: 30px;
 }
 .xdac-client-form .remember .xdac-forgot>a{
-    font-size: 2em;
+    font-size: 1em;
     color: #65686f;
     text-decoration: underline;
     border-left: 2px solid #65686f;
@@ -175,7 +202,7 @@
         height: 0;
     }
     100% {
-        height: 10px;
+        height: 6px;
     }
 }
 @-webkit-keyframes dothabottomcheck {
@@ -183,7 +210,7 @@
         height: 0;
     }
     100% {
-        height: 10px;
+        height: 6px;
     }
 }
 @keyframes dothabottomcheck {
@@ -191,7 +218,7 @@
         height: 0;
     }
     100% {
-        height: 10px;
+        height: 6px;
     }
 }
 @keyframes dothatopcheck {
@@ -202,7 +229,7 @@
         height: 0;
     }
     100% {
-        height: 30px;
+        height: 16px;
     }
 }
 @-webkit-keyframes dothatopcheck {
@@ -213,7 +240,7 @@
         height: 0;
     }
     100% {
-        height: 30px;
+        height: 16px;
     }
 }
 @-moz-keyframes dothatopcheck {
@@ -224,15 +251,15 @@
         height: 0;
     }
     100% {
-        height: 30px;
+        height: 16px;
     }
 }
 input[type="checkbox"] {
     display: none;
 }
 .xdac-remember-check-box {
-    height: 34px;
-    width: 34px;
+    height: 20px;
+    width: 20px;
     background-color: transparent;
     border: 2px solid #019bdb;
     border-radius: 0px;
@@ -270,8 +297,8 @@ input[type="checkbox"] {
     transition: opacity ease 0.5;
 }
 .xdac-remember-check-box::before {
-    top: 28px;
-    left: 14px;
+    top: 14px;
+    left: 7px;
     -moz-transform: rotate(-135deg);
     -ms-transform: rotate(-135deg);
     -o-transform: rotate(-135deg);
@@ -279,8 +306,8 @@ input[type="checkbox"] {
     transform: rotate(-135deg);
 }
 .xdac-remember-check-box::after {
-    top: 18px;
-    left: 4px;
+    top: 8px;
+    left: 0px;
     -moz-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
@@ -291,17 +318,55 @@ input[type="checkbox"]:checked + .xdac-remember-check-box, .xdac-remember-check-
     border-color: #34b93d;
 }
 input[type="checkbox"]:checked + .xdac-remember-check-box::after, .xdac-remember-check-box.checked::after {
-    height: 10px;
+    height: 6px;
     -moz-animation: dothabottomcheck 0.1s ease 0s forwards;
     -o-animation: dothabottomcheck 0.1s ease 0s forwards;
     -webkit-animation: dothabottomcheck 0.1s ease 0s forwards;
     animation: dothabottomcheck 0.1s ease 0s forwards;
 }
 input[type="checkbox"]:checked + .xdac-remember-check-box::before, .xdac-remember-check-box.checked::before {
-    height: 30px;
+    height: 16px;
     -moz-animation: dothatopcheck 0.2s ease 0s forwards;
     -o-animation: dothatopcheck 0.2s ease 0s forwards;
     -webkit-animation: dothatopcheck 0.2s ease 0s forwards;
     animation: dothatopcheck 0.2s ease 0s forwards;
 }
 /*================== END LOGIN PAGE =================*/
+
+@media only screen and (max-width : 768px) {
+
+    .wrapper-login-register {
+        padding: 50px 25px;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 500;
+    }
+
+    .tabs-login-register ul {
+        width: 300px;
+    }
+    .tabs-login-register ul li {
+        width: 148px;
+    }
+
+    .xdac-client-form input[type=text],
+    .xdac-client-form input[type=email],
+    .xdac-client-form input[type=password] {
+        width: 300px;
+        height: 54px;
+        padding-left: 38px;
+        font-size: 0.9em;
+    }
+
+    .xdac-client-form .remember {
+        width: 300px;
+    }
+
+    .xdac-client-form input[type=submit].xdac-submit-form {
+        width: 300px;
+        height: 56px;
+    }
+
+    .xdac-register-terms {
+        width: 300px;
+    }
+}

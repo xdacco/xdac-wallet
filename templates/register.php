@@ -1,10 +1,7 @@
-<?php
-// Script calling for the current page
-wp_enqueue_script( 'xdac-client-js' );
-?>
+<?php include_once( XDAC_ABSPATH.'/templates/header.php' ); ?>
 <div class="wrapper-login-register">
     <div class="logo-block">
-        <img src="<?php echo XDAC_PLUGIN_URL . 'assets/images/logo.png'; ?>">
+        <a href="<?php echo get_site_url(); ?>"><img src="<?php echo XDAC_PLUGIN_URL . 'assets/images/logo.png'; ?>"></a>
     </div>
     <div class="tabs-login-register">
         <ul class="nav nav-pills nav-justified">
@@ -15,14 +12,32 @@ wp_enqueue_script( 'xdac-client-js' );
         <p class="login-register-description"><?php _e('Register to purchase XDAC Tokens', 'xdac_wp_client'); ?></p>
     </div>
     <div class="xdac-client-form">
-        <form class="" action="" method="post">
 
+        <?php
+        global $reg_errors;
+        if ( is_wp_error( $reg_errors ) ) {
+
+            foreach ( $reg_errors->get_error_messages() as $error ) {
+
+                echo '<div class="xdac-client-errors">';
+                echo '<strong>ERROR</strong>:';
+                echo $error . '<br/>';
+                echo '</div>';
+
+            }
+        }
+        ?>
+
+
+
+        <form class="" action="" method="post">
+            <input type="hidden" name="xdac_client_form" value="register"/>
             <div>
-                <input type="text" name="first" value="" placeholder="First Name"/>
+                <input type="text" name="fname" value="" placeholder="First Name"/>
             </div>
 
             <div>
-                <input type="text" name="last" value="" placeholder="Last Name"/>
+                <input type="text" name="lname" value="" placeholder="Last Name"/>
             </div>
 
             <div>
@@ -51,3 +66,4 @@ wp_enqueue_script( 'xdac-client-js' );
         </form>
     </div>
 </div>
+<?php include_once( XDAC_ABSPATH.'/templates/footer.php' ); ?>

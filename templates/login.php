@@ -1,10 +1,7 @@
-<?php
-// Script calling for the current page
-wp_enqueue_script( 'xdac-client-js' );
-?>
+<?php include_once( XDAC_ABSPATH.'/templates/header.php' ); ?>
 <div class="wrapper-login-register">
     <div class="logo-block">
-        <img src="<?php echo XDAC_PLUGIN_URL . 'assets/images/logo.png'; ?>">
+        <a href="<?php echo get_site_url(); ?>"><img src="<?php echo XDAC_PLUGIN_URL . 'assets/images/logo.png'; ?>"></a>
     </div>
     <div class="tabs-login-register">
         <ul class="nav nav-pills nav-justified">
@@ -16,7 +13,7 @@ wp_enqueue_script( 'xdac-client-js' );
     </div>
     <div class="xdac-client-form">
         <form class="" action="" method="post">
-
+            <input type="hidden" name="xdac_client_form" value="login"/>
             <div>
                 <input type="email" name="email" value="" placeholder="Email"/>
             </div>
@@ -39,3 +36,4 @@ wp_enqueue_script( 'xdac-client-js' );
         </form>
     </div>
 </div>
+<?php include_once( XDAC_ABSPATH.'/templates/footer.php' ); ?>
