@@ -6,42 +6,36 @@
     <div class="tabs-login-register">
         <ul class="nav nav-pills nav-justified">
             <li role="presentation" class="active xdac-register"><a href="javascript:void(0);"><?php _e('Register', 'xdac_wp_client'); ?></a></li>
-            <li role="presentation" class="xdac-login"><a href="javascript:void(0);"><?php _e('Login', 'xdac_wp_client'); ?></a></li>
+            <li role="presentation" class="xdac-login"><a href="<?php echo home_url(XDAC_URL_LOGIN); ?>"><?php _e('Login', 'xdac_wp_client'); ?></a></li>
         </ul>
 
         <p class="login-register-description"><?php _e('Register to purchase XDAC Tokens', 'xdac_wp_client'); ?></p>
     </div>
     <div class="xdac-client-form">
 
-        <?php
-        global $reg_errors;
-        if ( is_wp_error( $reg_errors ) ) {
-
-            foreach ( $reg_errors->get_error_messages() as $error ) {
-
-                echo '<div class="xdac-client-errors">';
-                echo '<strong>ERROR</strong>:';
-                echo $error . '<br/>';
-                echo '</div>';
-
+        <div class="block-xdac-client-errors">
+            <?php
+            global $reg_errors;
+            if ( is_wp_error( $reg_errors ) ) {
+                foreach ( $reg_errors->get_error_messages() as $error ) {
+                    echo '<p class="xdac-client-errors">' . $error . '</p>';
+                }
             }
-        }
-        ?>
-
-
+            ?>
+        </div>
 
         <form class="" action="" method="post">
             <input type="hidden" name="xdac_client_form" value="register"/>
             <div>
-                <input type="text" name="fname" value="" placeholder="First Name"/>
+                <input type="text" name="fname" value="<?php echo !empty($_POST['fname']) ? $_POST['fname'] : ''; ?>" placeholder="First Name"/>
             </div>
 
             <div>
-                <input type="text" name="lname" value="" placeholder="Last Name"/>
+                <input type="text" name="lname" value="<?php echo !empty($_POST['lname']) ? $_POST['lname'] : ''; ?>" placeholder="Last Name"/>
             </div>
 
             <div>
-                <input type="email" name="email" value="" placeholder="Email"/>
+                <input type="email" name="email" value="<?php echo !empty($_POST['email']) ? $_POST['email'] : ''; ?>" placeholder="Email"/>
             </div>
 
             <div>
@@ -49,7 +43,7 @@
             </div>
 
             <div>
-                <input type="text" name="referral" value="" placeholder="Referral Name or ID"/>
+                <input type="text" name="referral" value="<?php echo !empty($_POST['referral']) ? $_POST['referral'] : ''; ?>" placeholder="Referral Name or ID"/>
             </div>
 
             <input class="xdac-submit-form" type="submit" value="<?php _e('REGISTER', 'xdac_wp_client'); ?>"/>

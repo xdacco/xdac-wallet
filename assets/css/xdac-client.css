@@ -68,11 +68,19 @@ body {
     -webkit-border-radius: 46px 0px 0px 46px;
 }
 .tabs-login-register ul li.xdac-login>a:hover,
-.tabs-login-register ul li.xdac-register>a:hover {
+.tabs-login-register ul li.xdac-register>a:hover,
+.tabs-login-register ul li.xdac-login>a:active,
+.tabs-login-register ul li.xdac-register>a:active,
+.tabs-login-register ul li.xdac-login>a:focus,
+.tabs-login-register ul li.xdac-register>a:focus {
     color: #ffffff;
 }
 .tabs-login-register ul li.xdac-login:not(.active)>a:hover,
-.tabs-login-register ul li.xdac-register:not(.active)>a:hover {
+.tabs-login-register ul li.xdac-register:not(.active)>a:hover,
+.tabs-login-register ul li.xdac-login:not(.active)>a:active,
+.tabs-login-register ul li.xdac-register:not(.active)>a:active,
+.tabs-login-register ul li.xdac-login:not(.active)>a:focus,
+.tabs-login-register ul li.xdac-register:not(.active)>a:focus {
     background-color: #292c3b;
 }
 .login-register-description {
@@ -139,11 +147,24 @@ body {
     -webkit-border-radius: 46px 46px 46px 46px;
     border: 0;
 }
-
+/*================== END ALL STYLES =================*/
+/*================== START ERRORS AND MESSAGES STYLES =================*/
+.block-xdac-client-message,
+.block-xdac-client-errors {
+    width: 374px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
 .xdac-client-errors {
     color: #d54e21;
 }
-/*================== END ALL STYLES =================*/
+.xdac-client-errors a {
+    color: #019bdb;
+}
+.xdac-client-message {
+    color: #34b93d;
+}
+/*================== END ERRORS AND MESSAGES STYLES =================*/
 /*================== START RECOVER PAGE =================*/
 .recover-submit {
     margin-top: 24px;
@@ -367,6 +388,11 @@ input[type="checkbox"]:checked + .xdac-remember-check-box::before, .xdac-remembe
     }
 
     .xdac-register-terms {
+        width: 300px;
+    }
+
+    .block-xdac-client-message,
+    .block-xdac-client-errors {
         width: 300px;
     }
 }
