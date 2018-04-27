@@ -146,6 +146,11 @@ body {
     -moz-border-radius: 46px 46px 46px 46px;
     -webkit-border-radius: 46px 46px 46px 46px;
     border: 0;
+    outline: none;
+}
+.xdac-client-form input[type=submit].xdac-submit-form::-moz-focus-inner {
+    border: 0;
+    outline: none;
 }
 /*================== END ALL STYLES =================*/
 /*================== START ERRORS AND MESSAGES STYLES =================*/
