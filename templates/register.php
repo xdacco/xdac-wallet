@@ -1,7 +1,7 @@
 <?php include_once( XDAC_ABSPATH.'/templates/header.php' ); ?>
 <div class="wrapper-login-register">
     <div class="logo-block">
-        <a href="<?php echo get_site_url(); ?>"><img src="<?php echo XDAC_PLUGIN_URL . 'assets/images/logo.png'; ?>"></a>
+        <a href="<?php echo get_site_url(); ?>"><img src="<?php echo XDAC_PLUGIN_URL . 'assets/images/xDAC-logo.png'; ?>"></a>
     </div>
     <div class="tabs-login-register">
         <ul class="nav nav-pills nav-justified">
@@ -27,19 +27,19 @@
         <form class="" action="" method="post">
             <input type="hidden" name="xdac_client_form" value="register"/>
             <div>
-                <input type="text" name="fname" value="<?php echo !empty($_POST['fname']) ? $_POST['fname'] : ''; ?>" placeholder="First Name"/>
+                <input type="text" name="fname" value="<?php echo !empty($_POST['fname']) ? $_POST['fname'] : ''; ?>" placeholder="First Name *"/>
             </div>
 
             <div>
-                <input type="text" name="lname" value="<?php echo !empty($_POST['lname']) ? $_POST['lname'] : ''; ?>" placeholder="Last Name"/>
+                <input type="text" name="lname" value="<?php echo !empty($_POST['lname']) ? $_POST['lname'] : ''; ?>" placeholder="Last Name *"/>
             </div>
 
             <div>
-                <input type="email" name="email" value="<?php echo !empty($_POST['email']) ? $_POST['email'] : ''; ?>" placeholder="Email"/>
+                <input type="email" name="email" value="<?php echo !empty($_POST['email']) ? $_POST['email'] : ''; ?>" placeholder="Email *"/>
             </div>
 
             <div>
-                <input type="password" name="password" value="" placeholder="Password"/>
+                <input type="password" name="password" value="" placeholder="Password *"/>
             </div>
 
             <div>
@@ -50,11 +50,11 @@
 
             <p class="xdac-register-terms">
                 <?php _e('By registering you agree to ', 'xdac_wp_client'); ?>
-                <a href="javascript:void(0);"><?php _e('Website Terms of Use', 'xdac_wp_client'); ?></a>
+                <a href="https://www.xdac.co/terms/" target="_blank"><?php _e('Website Terms of Use', 'xdac_wp_client'); ?></a>
                 <?php _e(' and the ', 'xdac_wp_client'); ?>
-                <a href="javascript:void(0);"><?php _e('Token Sale Terms and Conditions', 'xdac_wp_client'); ?></a>
+                <a href="https://xdac.co/docs/xDAC-Token-Sale-Terms.pdf" target="_blank"><?php _e('Token Sale Terms and Conditions', 'xdac_wp_client'); ?></a>
                 <?php _e(' as well as the ', 'xdac_wp_client'); ?>
-                <a href="javascript:void(0);"><?php _e('Privacy Policy', 'xdac_wp_client'); ?></a>
+                <a href="https://www.xdac.co/privacy-policy/"  target="_blank"><?php _e('Privacy Policy', 'xdac_wp_client'); ?></a>
             </p>
 
         </form>

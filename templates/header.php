@@ -12,6 +12,7 @@
 
     <link href="<?php echo get_template_directory_uri() . '/assets/css/bootstrap.min.css'; ?>" rel="stylesheet">
     <link href="<?php echo plugin_dir_url( __FILE__ ) . '../assets/css/xdac-client.css'; ?>" rel="stylesheet">
+	<link rel="icon" href="https://www.xdac.co/wp-content/uploads/2018/02/cropped-xDAO-icon-512x512-white-bg-full-32x32.png" sizes="32x32" />
 
 </head>
 

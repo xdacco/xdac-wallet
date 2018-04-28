@@ -8,7 +8,7 @@ body {
 
 /*================== START ALL STYLES =================*/
 .wrapper-login-register {
-    padding: 50px;
+    padding: 100px 0 20px 0;
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
 }
@@ -16,10 +16,10 @@ body {
     text-align: center;
 }
 .wrapper-login-register .logo-block img {
-    width: 250px;
+    width: 300px;
 }
 .tabs-login-register {
-    margin-top: 80px;
+    margin-top: 35px;
     text-align: center;
 }
 .tabs-login-register ul>li>a {
@@ -86,7 +86,7 @@ body {
 .login-register-description {
     color: #ffffff;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-size: 1em;
 }
 
@@ -99,42 +99,43 @@ body {
     width: 374px;
     height: 54px;
     background-color: #222836;
-    color: #65686f;
+    color: #ffffff;
     border-radius: 46px 46px 46px 46px;
     -moz-border-radius: 46px 46px 46px 46px;
     -webkit-border-radius: 46px 46px 46px 46px;
     border: none;
-    padding-left: 38px;
-    font-size: 0.9em;
+    padding-left: 30px;
+    font-size: 1em;
 }
 .xdac-client-form input[type=text],
 .xdac-client-form input[type=email],
 .xdac-client-form input[type=password] {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+	outline: none;
 }
 .xdac-client-form input[type=text]::-webkit-input-placeholder,
 .xdac-client-form input[type=email]::-webkit-input-placeholder,
 .xdac-client-form input[type=password]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #65686f;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 .xdac-client-form input[type=text]::-moz-placeholder,
 .xdac-client-form input[type=email]::-moz-placeholder,
 .xdac-client-form input[type=password]::-moz-placeholder { /* Firefox 19+ */
     color: #65686f;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 .xdac-client-form input[type=text]:-ms-input-placeholder,
 .xdac-client-form input[type=password]:-ms-input-placeholder,
 .xdac-client-form input[type=email]:-ms-input-placeholder { /* IE 10+ */
     color: #65686f;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 .xdac-client-form input[type=text]:-moz-placeholder,
 .xdac-client-form input[type=password]:-moz-placeholder,
 .xdac-client-form input[type=email]:-moz-placeholder { /* Firefox 18- */
     color: #65686f;
-    font-size: 1.2em;
+    font-size: 1em;
 }
 .xdac-client-form input[type=submit].xdac-submit-form {
     width: 374px;

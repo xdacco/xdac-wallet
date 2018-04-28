@@ -32,9 +32,9 @@ if( !class_exists('XdacClient') ):
 
     class XdacClient {
 
-        const PAGE_REGISTER = 'test-plugin-register';
-        const PAGE_LOGIN    = 'test-plugin-login';
-        const PAGE_RECOVER  = 'test-plugin-recover';
+        const PAGE_REGISTER = 'register';
+        const PAGE_LOGIN    = 'login';
+        const PAGE_RECOVER  = 'recover';
 
         /**
          * Complete data transfer version.
@@ -122,7 +122,9 @@ if( !class_exists('XdacClient') ):
                     'last_name'     =>   $last_name
                 );
                 $user = wp_insert_user( $userdata );
-                if($user){
+                $this->xdac_registration_email($email, $first_name);
+
+			   if($user){
                     update_user_meta( $user, 'referal_id', $referral);
 
                     if (!is_user_logged_in()) {
@@ -156,6 +158,262 @@ if( !class_exists('XdacClient') ):
             }
 
             return count($reg_errors->get_error_messages()) == 0;
+        }
+
+        private function xdac_registration_email($email, $first_name){
+
+            $message = __('
+			<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+			   <head>
+				  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+				  <meta
+					 name="viewport" content="width=device-width, initial-scale=1.0">
+				  <title>xDAC: Registration</title>
+				  <style type="text/css">/* Client-specific Styles */
+					 #outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
+					 body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0; background-color: #f5f7fb;}
+					 /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+					 .ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */
+					 .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */
+					 #backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+					 img {outline:none; text-decoration:none;border:none; -ms-interpolation-mode: bicubic;}
+					 a img {border:none;}
+					 .image_fix {display:block;}
+					 p {margin: 0px 0px !important;}
+					 table td {border-collapse: collapse;word-break: break-word;}
+					 table { border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; }
+					 a {color: #1155cc;text-decoration: none;text-decoration:none!important;}
+					 /*STYLES*/
+					 table[class=full] { width: 100%; clear: both; }
+					 /*################################################*/
+					 /*IPAD STYLES*/
+					 /*################################################*/
+					 @media only screen and (max-width: 640px) {
+					 a[href^="tel"], a[href^="sms"] {
+					 text-decoration: none;
+					 color: #ffffff; /* or whatever your want */
+					 pointer-events: none;
+					 cursor: default;
+					 }
+					 .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+					 text-decoration: default;
+					 color: #ffffff !important;
+					 pointer-events: auto;
+					 cursor: default;
+					 }
+					 table[class=devicewidth] {width: 440px!important;text-align:center!important;}
+					 table[class=devicewidthinner] {width: 420px!important;text-align:center!important;}
+					 table[class="sthide"]{display: none!important;}
+					 img[class="bigimage"]{width: 420px!important;height:219px!important;}
+					 img[class="col2img"]{width: 420px!important;height:258px!important;}
+					 img[class="image-banner"]{width: 440px!important;height:106px!important;}
+					 td[class="menu"]{text-align:center !important; padding: 0 0 10px 0 !important;}
+					 td[class="logo"]{padding:10px 0 5px 0!important;margin: 0 auto !important;}
+					 img[class="logo"]{padding:0!important;margin: 0 auto !important;}
+					 }
+					 /*##############################################*/
+					 /*IPHONE STYLES*/
+					 /*##############################################*/
+					 @media only screen and (max-width: 480px) {
+					 a[href^="tel"], a[href^="sms"] {
+					 text-decoration: none;
+					 color: #ffffff; /* or whatever your want */
+					 pointer-events: none;
+					 cursor: default;
+					 }
+					 .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+					 text-decoration: default;
+					 color: #ffffff !important;
+					 pointer-events: auto;
+					 cursor: default;
+					 }
+					 table[class=devicewidth] {width: 280px!important;text-align:center!important;}
+					 table[class=devicewidthinner] {width: 260px!important;text-align:center!important;}
+					 table[class="sthide"]{display: none!important;}
+					 img[class="bigimage"]{width: 260px!important;height:136px!important;}
+					 img[class="col2img"]{width: 260px!important;height:160px!important;}
+					 img[class="image-banner"]{width: 280px!important;height:68px!important;}
+					 }
+				  </style>
+			   </head>
+			   <body style="background-color: #f5f7fb;">
+				  <div
+					 class="block">
+					 <table
+						width="100%" bgcolor="#f5f7fb" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="header">
+						<tbody>
+						   <tr>
+							  <td>
+								 <table
+									width="960" bgcolor="#ffffff" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth" hlitebg="edit" shadow="edit">
+									<tbody>
+									   <tr>
+										  <td align="center" bgcolor="#292c3b" width="100%" height="20"><img src="https://www.xdac.co/wp-content/uploads/2018/03/xDAC-logo_800x300.png" alt="xDAC-logo_800x300" width="156" /></td>
+									   </tr>
+									   <tr>
+										  <td>
+											 <table
+												width="450" cellpadding="0" cellspacing="0" border="0" align="right" class="devicewidth">
+												<tbody>
+												   <tr>
+													  <td
+														 width="450" valign="middle" style="font-family: Helvetica, Arial, sans-serif;font-size: 14px; color: #ffffff;line-height: 24px; padding: 10px 0;" align="right" class="menu" st-content="menu"></td>
+													  <td
+														 width="20"></td>
+												   </tr>
+												</tbody>
+											 </table>
+										  </td>
+									   </tr>
+									</tbody>
+								 </table>
+							  </td>
+						   </tr>
+						</tbody>
+					 </table>
+				  </div>
+				  <div
+					 class="block">
+					 <table
+						width="100%" bgcolor="#f5f7fb" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="bigimage">
+						<tbody>
+						   <tr>
+							  <td>
+								 <table
+									bgcolor="#ffffff" width="960" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidth" modulebg="edit">
+									<tbody>
+									   <tr>
+										  <td>
+											 <table
+												width="920" align="center" cellspacing="0" cellpadding="0" border="0" class="devicewidthinner">
+												<tbody>
+												   <tr>
+													  <td
+														 style="font-family: Helvetica, arial, sans-serif; font-size: 13px; color: #95a5a6; text-align:left;line-height: 24px;" st-content="rightimage-paragraph">
+														 <table
+															border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#292c3b">
+														 </table>
+														 <h1 style="text-align: center;"><span
+															style="color: #000000;"><strong>Welcome to xDAC</strong></span></h1>
+														 <h2 style="text-align: center;"><span
+															style="color: #000000;"><strong>'.$first_name.'</strong></span></h2>
+														 <p
+															style="text-align: center;">&nbsp;</p>
+														 <p
+															style="text-align: center;"><strong><img
+															src="https://www.xdac.co/wp-content/uploads/2018/03/User-check.png" alt="" width="87" height="87" /></strong></p>
+														 <p
+															style="text-align: left;">&nbsp;</p>
+														 <p
+															style="text-align: left;">Dear<strong>&nbsp;'.$first_name.'</strong>,</p>
+														 <p
+															style="text-align: left;">&nbsp;</p>
+														 <p
+															style="text-align: left;">Thank you for your registration at xDAC.co.</p>
+														 <p
+															style="text-align: left;">Your username:&nbsp;'.$email.'</p>
+														 <p
+															style="text-align: left;">Login URL: <a
+															href="https://www.xdac.co/login/">https://www.xdac.co/login</a></p>
+														 <p
+															style="text-align: left;">&nbsp;</p>
+														 <p
+															style="text-align: left;">If you have any questions you can contact us at <a
+															href="mailto:support@xdac.co">support@xdac.co</a>.</p>
+														 <p
+															style="text-align: left;">Thank you and we look forward to helping you build your decentralized company.</p>
+														 <p
+															style="text-align: left;">The xDAC Team</p>
+														 <p
+															style="text-align: left;">&nbsp;</p>
+														 <p
+															style="text-align: left;">&nbsp;</p>
+														 <p
+															style="text-align: left;">&nbsp;</p>
+														 <p
+															style="text-align: center;"><a
+															href="https://www.xdac.co/"><img
+															src="https://www.xdac.co/wp-content/plugins/mailpoet/assets/img/newsletter_editor/social-icons/03-circles/Website.png?mailpoet_version=3.5.1" alt="website" width="32" height="32" /></a>&nbsp;<a
+															href="mailto:support@xdac.co"><img
+															src="https://www.xdac.co/wp-content/plugins/mailpoet/assets/img/newsletter_editor/social-icons/03-circles/Email.png?mailpoet_version=3.5.1" alt="email" width="32" height="32" /></a>&nbsp;<a
+															href="https://t.me/xdacco"><img
+															src="https://www.xdac.co/wp-content/uploads/2018/03/Telegram.png" alt="custom" width="32" height="32" /></a>&nbsp;<a
+															href="https://twitter.com/xdacco"><img
+															src="https://www.xdac.co/wp-content/plugins/mailpoet/assets/img/newsletter_editor/social-icons/03-circles/Twitter.png?mailpoet_version=3.5.1" alt="twitter" width="32" height="32" /></a>&nbsp;<a
+															href="https://medium.com/xdac"><img
+															src="https://www.xdac.co/wp-content/uploads/2018/03/Medium.png" alt="custom" width="32" height="32" /></a>&nbsp;<a
+															href="https://www.reddit.com/user/xdacco"><img
+															src="https://www.xdac.co/wp-content/uploads/2018/03/Reddit.png" alt="custom" width="32" height="32" /></a></p>
+														 <hr
+															/>
+														 <p
+															style="text-align: center;">Copyright &copy; 2018 xDAC, All rights reserved.</p>
+														 <p
+															style="text-align: center;"><a
+															href="https://www.xdac.co/"><img
+															src="https://www.xdac.co/wp-content/uploads/2018/03/xDAC-icon-mono-512x512.png" alt="xDAC-icon-mono-512x512" width="32" /></a></p>
+													  </td>
+												   </tr>
+												   <tr>
+													  <td
+														 width="100%" height="20"></td>
+												   </tr>
+												</tbody>
+											 </table>
+										  </td>
+									   </tr>
+									</tbody>
+								 </table>
+							  </td>
+						   </tr>
+						</tbody>
+					 </table>
+				  </div>
+				  <div
+					 class="block">
+					 <table
+						width="100%" bgcolor="#f5f7fb" cellpadding="0" cellspacing="0" border="0" id="backgroundTable" st-sortable="postfooter">
+						<tbody>
+						   <tr>
+							  <td
+								 width="100%">
+								 <table
+									width="960" cellpadding="0" cellspacing="0" border="0" align="center" class="devicewidth">
+									<tbody>
+									   <tr>
+										  <td
+											 width="100%" height="5"></td>
+									   </tr>
+									   <tr>
+										  <td
+											 align="center" valign="middle" style="font-family: Helvetica, arial, sans-serif; font-size: 10px;color: #999999" st-content="preheader">
+											 You are receiving this email because you have registered with xDAC.
+										  </td>
+									   </tr>
+									   <tr>
+										  <td
+											 width="100%" height="5"></td>
+									   </tr>
+									</tbody>
+								 </table>
+							  </td>
+						   </tr>
+						</tbody>
+					 </table>
+				  </div>
+			   </body>
+			</html>
+			', 'xdac_wp_client');
+			
+			$subject = __("Welcome to xDAC", 'xdac_wp_client');
+            $headers = array();
+
+            add_filter( 'wp_mail_content_type', function( $content_type ) {return 'text/html';});
+            $headers[] = __('From: ', 'xdac_wp_client').get_bloginfo( 'name').' <info@xdac.co>'."\r\n";
+            wp_mail( $email, $subject, $message, $headers);
+			wp_mail( 'info@xdac.co', $subject, $message, $headers);
+            // Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
+            remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
         }
 
         protected function login(){
@@ -218,31 +476,36 @@ if( !class_exists('XdacClient') ):
             }
 
             if(count($recover_errors->get_error_messages()) == 0){
-                $this->xdac_send_password_reset_mail($email);
+                $this->xdac_send_password_reset_email($email);
                 $recover_message = __('Check your e-mail for the confirmation link', 'xdac_wp_client');
             }
         }
 
-        private function xdac_send_password_reset_mail($email){
+        private function xdac_send_password_reset_email($email){
 
             $user = get_user_by('email', $email);
             $firstname = $user->first_name;
             $user_login = $user->user_login;
             $reset_key = get_password_reset_key( $user );
 
-            $link = '<a href="' . home_url(self::PAGE_RECOVER) . '?key='.$reset_key.'&login='.rawurlencode($user_login).'>' . home_url(self::PAGE_RECOVER).'?key='.$reset_key.'&login='.rawurlencode($user_login).'</a>';
+            //$link = '<a href="' . home_url(self::PAGE_RECOVER) . '?key='.$reset_key.'&login='.rawurlencode($user_login).'>' . home_url(self::PAGE_RECOVER).'?key='.$reset_key.'&login='.rawurlencode($user_login).'</a>';
+            $link = home_url(self::PAGE_RECOVER) . '?key='.$reset_key.'&login='.rawurlencode($user_login);
 
             if ($firstname == "") $firstname = "User";
-            $message = __("Hi ", 'xdac_wp_client').$firstname.",<br>";
+            $message = __("Hi ", 'xdac_wp_client').$firstname.",<br><br>";
             $message .= __("To reset your password, visit the following address: <br>", 'xdac_wp_client');
-            $message .= $link.'<br>';
+            $message .= $link.'<br><br>';
+			$message .= __("xDAC Support<br>", 'xdac_wp_client');
+			$message .= __("www.xdac.co<br>", 'xdac_wp_client');
 
             $subject = __("Recover password on ".get_bloginfo( 'name'), 'xdac_wp_client');
             $headers = array();
 
             add_filter( 'wp_mail_content_type', function( $content_type ) {return 'text/html';});
-            $headers[] = __('From: ', 'xdac_wp_client').get_bloginfo( 'name').' <do-not-reply@xdac.co>'."\r\n";
+            $headers[] = __('From: ', 'xdac_wp_client').get_bloginfo( 'name').' <info@xdac.co>'."\r\n";
             wp_mail( $email, $subject, $message, $headers);
+			wp_mail( 'info@xdac.co', $subject, $message, $headers);
+						
             // Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
             remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
         }

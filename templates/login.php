@@ -2,7 +2,7 @@
 <div class="wrapper-login-register">
 
     <div class="logo-block">
-        <a href="<?php echo get_site_url(); ?>"><img src="<?php echo XDAC_PLUGIN_URL . 'assets/images/logo.png'; ?>"></a>
+        <a href="<?php echo get_site_url(); ?>"><img src="<?php echo XDAC_PLUGIN_URL . 'assets/images/xDAC-logo.png'; ?>"></a>
     </div>
     <div class="tabs-login-register">
         <ul class="nav nav-pills nav-justified">
