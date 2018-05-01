@@ -24,6 +24,11 @@ Text Domain: xdac_wp_client
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+
+require_once 'classes/PushId.php';
+
+use XDAC\PushId;
+
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
@@ -125,7 +130,12 @@ if( !class_exists('XdacClient') ):
                 $this->xdac_registration_email($email, $first_name);
 
 			   if($user){
-                    update_user_meta( $user, 'referal_id', $referral);
+
+			        if(!empty($referral)){
+                        update_user_meta( $user, 'referral_id', $referral);
+                    }
+
+                    update_user_meta( $user, 'referral_program', PushId::generate());
 
                     if (!is_user_logged_in()) {
                         //login
@@ -559,6 +569,19 @@ if( !class_exists('XdacClient') ):
 
             if ( ! isset( $user->ID ) ) {
                 return $redirect_url;
+            }
+
+            //
+            $referral = get_user_meta($user->ID, 'referal_id', true);
+            if(!empty($referral)){
+                update_user_meta( $user->ID, 'referral_id', $referral);
+                delete_user_meta( $user->ID, 'referal_id');
+            }
+
+            //
+            $referal_program = get_user_meta($user->ID, 'referral_program', true);
+            if(empty($referal_program)){
+                update_user_meta( $user->ID, 'referral_program', PushId::generate());
             }
 
             if ( user_can( $user, 'manage_options' ) ) {
