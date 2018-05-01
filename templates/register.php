@@ -21,6 +21,13 @@
                     echo '<p class="xdac-client-errors">' . $error . '</p>';
                 }
             }
+
+            /**
+             * If there is a referral link - it should be added
+            */
+            $get_referral = !empty($_GET['ref']) ? $_GET['ref'] : '';
+            $referral = !empty($_POST['referral']) ? $_POST['referral'] : $get_referral;
+
             ?>
         </div>
 
@@ -43,7 +50,7 @@
             </div>
 
             <div>
-                <input type="text" name="referral" value="<?php echo !empty($_POST['referral']) ? $_POST['referral'] : ''; ?>" placeholder="Referral Name or ID"/>
+                <input type="text" name="referral" value="<?php echo $referral; ?>" placeholder="Referral Name or ID"/>
             </div>
 
             <input class="xdac-submit-form" type="submit" value="<?php _e('REGISTER', 'xdac_wp_client'); ?>"/>
