@@ -574,8 +574,8 @@ if( !class_exists('XdacClient') ):
             $referral = get_user_meta($user->ID, 'referal_id', true);
             if(!empty($referral)){
                 update_user_meta( $user->ID, 'referral_id', $referral);
-                delete_user_meta( $user->ID, 'referal_id');
             }
+            delete_user_meta( $user->ID, 'referal_id');
 
             //
             $referal_program = get_user_meta($user->ID, 'referral_program', true);
