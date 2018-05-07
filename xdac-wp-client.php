@@ -134,7 +134,7 @@ if( !class_exists('XdacClient') ):
                         update_user_meta( $user, 'referral_id', $referral);
                     }
 
-                    update_user_meta( $user, 'referral_program', PushId::generate());
+                    update_user_meta( $user, 'referral_program', PushId::generateRandomString());
 
                     if (!is_user_logged_in()) {
                         //login
@@ -545,6 +545,9 @@ if( !class_exists('XdacClient') ):
          * @since  1.0.0
          */
         private function init_hooks() {
+
+            add_action('init', array( $this, 'xdac_session_start' ), 1);
+
             add_action('admin_notices', array( $this, 'admin_notices' ), 15 );
             add_action('plugins_loaded', array($this, 'init'), 1);
 
@@ -552,6 +555,12 @@ if( !class_exists('XdacClient') ):
             add_filter( 'login_redirect', array( $this, 'redirect_after_login' ), 10, 3 );
 
             add_filter( 'authenticate', array( $this, 'maybe_redirect_at_authenticate' ), 101, 3 );
+        }
+
+        public function xdac_session_start(){
+            if(!session_id()) {
+                session_start();
+            }
         }
 
         /**
@@ -579,8 +588,8 @@ if( !class_exists('XdacClient') ):
 
             //
             $referal_program = get_user_meta($user->ID, 'referral_program', true);
-            if(empty($referal_program)){
-                update_user_meta( $user->ID, 'referral_program', PushId::generate());
+            if(empty($referal_program) || strlen($referal_program) != 10){
+                update_user_meta( $user->ID, 'referral_program', PushId::generateRandomString());
             }
 
             if ( user_can( $user, 'manage_options' ) ) {
@@ -658,6 +667,16 @@ if( !class_exists('XdacClient') ):
 
         function xdac_page_template( $page_template )
         {
+            /**
+             * Save the referral code to the session in order to not miss the code,
+             * if the user doesn't register at once
+             */
+            if(is_home() || is_front_page()){
+                if(!empty($_GET['ref'])){
+                    $_SESSION['ref'] = $_GET['ref'];
+                }
+            }
+
             if ( is_page( self::PAGE_REGISTER ) ) {
                 if ( is_user_logged_in() ) {
                     wp_redirect(home_url('/account'));

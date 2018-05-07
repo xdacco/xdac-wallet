@@ -91,4 +91,14 @@ class PushId
             throw new \RuntimeException($message);
         }
     }
+
+    public static function generateRandomString($length = 9) {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return 'X'.$randomString;
+    }
 }

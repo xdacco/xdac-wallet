@@ -25,7 +25,7 @@
             /**
              * If there is a referral link - it should be added
             */
-            $get_referral = !empty($_GET['ref']) ? $_GET['ref'] : '';
+            $get_referral = !empty($_SESSION['ref']) ? $_SESSION['ref'] : '';
             $referral = !empty($_POST['referral']) ? $_POST['referral'] : $get_referral;
 
             ?>
