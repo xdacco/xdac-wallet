@@ -29,35 +29,35 @@
             <form class="" action="" method="post">
                 <input type="hidden" name="xdac_client_form" value="register"/>
                 <div <?php if( !empty($reg_errors->errors['first_name']) ) echo 'class="error"'; ?>>
-                    <?php if ( is_wp_error( $reg_errors ) )  echo '<p class="xdac-client-errors">' . $reg_errors->errors['first_name'][0] . '</p>'; ?>
-                    <input type="text" name="fname" value="<?php echo !empty($_POST['fname']) ? $_POST['fname'] : ''; ?>" placeholder="First Name *" required />
+                    <?php if ( !empty($reg_errors->errors['first_name']) )  echo '<p class="xdac-client-errors">' . $reg_errors->errors['first_name'][0] . '</p>'; ?>
+                    <input type="text" name="fname" value="<?php echo !empty($_POST['fname']) ? $_POST['fname'] : ''; ?>" placeholder="First Name *"  />
                 </div>
 
                 <div <?php if( !empty($reg_errors->errors['last_name']) ) echo 'class="error"'; ?>>
-                    <?php if ( is_wp_error( $reg_errors ) )  echo '<p class="xdac-client-errors">' . $reg_errors->errors['last_name'][0] . '</p>'; ?>
-                    <input type="text" name="lname" value="<?php echo !empty($_POST['lname']) ? $_POST['lname'] : ''; ?>" placeholder="Last Name *" required />
+                    <?php if ( !empty($reg_errors->errors['last_name']) )  echo '<p class="xdac-client-errors">' . $reg_errors->errors['last_name'][0] . '</p>'; ?>
+                    <input type="text" name="lname" value="<?php echo !empty($_POST['lname']) ? $_POST['lname'] : ''; ?>" placeholder="Last Name *"  />
                 </div>
 
                 <div <?php if( !empty($reg_errors->errors['email']) ) echo 'class="error"'; ?>>
-                    <?php if ( is_wp_error( $reg_errors ) ) echo '<p class="xdac-client-errors">' . $reg_errors->errors['email'][0] . '</p>'; ?>
+                    <?php if ( !empty($reg_errors->errors['email']) ) echo '<p class="xdac-client-errors">' . $reg_errors->errors['email'][0] . '</p>'; ?>
                     <input type="email" name="email" value="<?php echo !empty($_POST['email']) ? $_POST['email'] : ''; ?>" placeholder="Email *" required />
                 </div>
 
                 <div <?php if( !empty($reg_errors->errors['password']) ) echo 'class="error"'; ?>>
-                    <?php if ( is_wp_error( $reg_errors ) ) echo '<p class="xdac-client-errors">' . $reg_errors->errors['password'][0] . '</p>'; ?>
+                    <?php if ( !empty($reg_errors->errors['password']) ) echo '<p class="xdac-client-errors">' . $reg_errors->errors['password'][0] . '</p>'; ?>
                     <input type="password" name="password" value="" placeholder="Password *" required />
                 </div>
 
                 <div <?php if( !empty($reg_errors->errors['referral']) ) echo 'class="error"'; ?>>
-                    <?php if ( is_wp_error( $reg_errors ) ) echo '<p class="xdac-client-errors">' . $reg_errors->errors['referral'][0] . '</p>'; ?>
-                    <input type="text"
-                           name="referral"
-                           value="<?php echo $referral; ?>"
-                           placeholder="Referral Name or ID"
-                           <?php if(!empty($get_referral)) echo 'disabled'; ?>
-                           maxlength="10"
-                           pattern="^([a-zA-Z])[a-zA-Z_-]*[\w_-]*[\S]$|^([a-zA-Z])[0-9_-]*[\S]$|^[a-zA-Z]*[\S]$"
-                           title="Referral Name or ID should contain only numbers and letters. e.g. XExaMple18"/>
+                    <?php if ( !empty($reg_errors->errors['referral']) ) echo '<p class="xdac-client-errors">' . $reg_errors->errors['referral'][0] . '</p>'; ?>
+                    <input  type="text"
+                            name="referral"
+                            value="<?php echo $referral; ?>"
+                            placeholder="Referral Name or ID"
+                            <?php if(!empty($get_referral)) echo 'disabled'; ?>
+                            maxlength="10"
+                            pattern="^([a-zA-Z])[a-zA-Z_-]*[\w_-]*[\S]$|^([a-zA-Z])[0-9_-]*[\S]$|^[a-zA-Z]*[\S]$"
+                            title="Referral Name or ID should contain only numbers and letters. e.g. XExaMple18"/>
                 </div>
 
                 <input class="xdac-submit-form" type="submit" value="<?php _e('REGISTER', 'xdac_wp_client'); ?>"/>

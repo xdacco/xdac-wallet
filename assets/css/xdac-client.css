@@ -110,7 +110,7 @@ body {
 .xdac-client-form input[type=text],
 .xdac-client-form input[type=email],
 .xdac-client-form input[type=password] {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     outline: none;
 }
 .xdac-client-form input[type=text]::-webkit-input-placeholder,
@@ -159,7 +159,7 @@ body {
 .xdac-client-form div.error .xdac-client-errors{
     position: absolute;
     left: calc( 50% - 160px );
-    bottom: -10px;
+    bottom: -5px;
 }
 .xdac-client-form div.error input[type=text],
 .xdac-client-form div.error input[type=email],
