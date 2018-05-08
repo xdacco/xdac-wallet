@@ -374,7 +374,10 @@ input[type="checkbox"]:checked + .xdac-remember-check-box::before, .xdac-remembe
 /*================== END LOGIN PAGE =================*/
 
 @media only screen and (max-width : 768px) {
-
+    .wrapper-login-register .logo-block img {
+        max-width: 300px;
+        width: 100%;
+    }
     .wrapper-login-register {
         padding: 50px 25px;
         font-family: 'Ubuntu', sans-serif;
@@ -382,16 +385,19 @@ input[type="checkbox"]:checked + .xdac-remember-check-box::before, .xdac-remembe
     }
 
     .tabs-login-register ul {
-        width: 300px;
+        max-width: 300px;
+        width: 100%;
     }
     .tabs-login-register ul li {
-        width: 148px;
+        max-width: 148px;
+        width: 50%;
     }
 
     .xdac-client-form input[type=text],
     .xdac-client-form input[type=email],
     .xdac-client-form input[type=password] {
-        width: 300px;
+        max-width: 300px;
+        width: 100%;
         height: 54px;
         padding-left: 38px;
         font-size: 0.9em;
@@ -402,16 +408,22 @@ input[type="checkbox"]:checked + .xdac-remember-check-box::before, .xdac-remembe
     }
 
     .xdac-client-form input[type=submit].xdac-submit-form {
-        width: 300px;
+        max-width: 300px;
+        width: 100%;
         height: 56px;
     }
 
     .xdac-register-terms {
-        width: 300px;
+        max-width: 300px;
+        width: 100%;
     }
 
     .block-xdac-client-message,
     .block-xdac-client-errors {
-        width: 300px;
+        max-width: 300px;
+        width: 100%;
+    }
+    .xdac-client-form div.error .xdac-client-errors {
+        left: calc( 50% - 135px );
     }
 }
