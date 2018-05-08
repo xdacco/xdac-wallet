@@ -114,7 +114,7 @@ if( !class_exists('XdacClient') ):
             $password   =   esc_attr( $_POST['password'] );
             $referral   =   sanitize_text_field( $_POST['referral'] );
 
-            if($this->registration_validation($email, $password)){
+            if($this->registration_validation($first_name, $last_name, $email, $password, $referral)){
 
                 $user_login = sanitize_user($email);
 
@@ -126,13 +126,12 @@ if( !class_exists('XdacClient') ):
                     'last_name'     =>   $last_name
                 );
                 $user = wp_insert_user( $userdata );
-                $this->xdac_registration_email($email, $first_name);
 
-			   if($user){
+                if($user){
 
-			        if(!empty($referral)){
-                        update_user_meta( $user, 'referral_id', $referral);
-                    }
+                    $this->xdac_registration_email($email, $first_name);
+
+                    update_user_meta( $user, 'referral_id', $referral);
 
                     update_user_meta( $user, 'referral_program', PushId::generateRandomString());
 
@@ -149,24 +148,41 @@ if( !class_exists('XdacClient') ):
             }
         }
 
-        public function registration_validation($email, $password){
+        public function registration_validation($first_name, $last_name, $email, $password, $referral){
 
             global $reg_errors;
             $reg_errors = new WP_Error();
+
+
+            if ( empty($first_name) ) {
+                $reg_errors->add( 'first_name', __('First Name required', 'xdac_wp_client'));
+            }
+
+            if ( empty($last_name) ) {
+                $reg_errors->add( 'last_name', __('Last Name required', 'xdac_wp_client'));
+            }
 
             if ( strlen( $password ) < 6 ) {
                 $reg_errors->add( 'password', __('Password length must be greater than 6', 'xdac_wp_client'));
             }
 
             if ( !is_email( $email ) ) {
-                $reg_errors->add( 'email_invalid', __('Email is not valid', 'xdac_wp_client'));
+                $reg_errors->add( 'email', __('Email is not valid', 'xdac_wp_client'));
+            }elseif ( email_exists( $email ) ) {
+                $reg_errors->add( 'email', __('Email already used', 'xdac_wp_client'));
             }
 
-            if ( email_exists( $email ) ) {
-                $reg_errors->add( 'email', __('Email Already in use', 'xdac_wp_client'));
+            if(!empty($referral) && $this->referral_check($referral) <= 0 ){
+                $reg_errors->add( 'referral', __('Referral Code is not valid', 'xdac_wp_client'));
             }
 
             return count($reg_errors->get_error_messages()) == 0;
+        }
+
+        public function referral_check($referral){
+            global $wpdb;
+            $rowcount = $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}usermeta WHERE meta_key = 'referral_program' AND meta_value = '$referral'");
+            return $rowcount;
         }
 
         private function xdac_registration_email($email, $first_name){
@@ -413,14 +429,14 @@ if( !class_exists('XdacClient') ):
 			   </body>
 			</html>
 			', 'xdac_wp_client');
-			
-			$subject = __("Welcome to xDAC", 'xdac_wp_client');
+
+            $subject = __("Welcome to xDAC", 'xdac_wp_client');
             $headers = array();
 
             add_filter( 'wp_mail_content_type', function( $content_type ) {return 'text/html';});
             $headers[] = __('From: ', 'xdac_wp_client').get_bloginfo( 'name').' <info@xdac.co>'."\r\n";
             wp_mail( $email, $subject, $message, $headers);
-			wp_mail( 'info@xdac.co', $subject, $message, $headers);
+            wp_mail( 'info@xdac.co', $subject, $message, $headers);
             // Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
             remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
         }
@@ -504,8 +520,8 @@ if( !class_exists('XdacClient') ):
             $message = __("Hi ", 'xdac_wp_client').$firstname.",<br><br>";
             $message .= __("To reset your password, visit the following address: <br>", 'xdac_wp_client');
             $message .= $link.'<br><br>';
-			$message .= __("xDAC Support<br>", 'xdac_wp_client');
-			$message .= __("www.xdac.co<br>", 'xdac_wp_client');
+            $message .= __("xDAC Support<br>", 'xdac_wp_client');
+            $message .= __("www.xdac.co<br>", 'xdac_wp_client');
 
             $subject = __("Recover password on ".get_bloginfo( 'name'), 'xdac_wp_client');
             $headers = array();
@@ -513,8 +529,8 @@ if( !class_exists('XdacClient') ):
             add_filter( 'wp_mail_content_type', function( $content_type ) {return 'text/html';});
             $headers[] = __('From: ', 'xdac_wp_client').get_bloginfo( 'name').' <info@xdac.co>'."\r\n";
             wp_mail( $email, $subject, $message, $headers);
-			wp_mail( 'info@xdac.co', $subject, $message, $headers);
-						
+            wp_mail( 'info@xdac.co', $subject, $message, $headers);
+
             // Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
             remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
         }

@@ -111,7 +111,7 @@ body {
 .xdac-client-form input[type=email],
 .xdac-client-form input[type=password] {
     margin-bottom: 20px;
-	outline: none;
+    outline: none;
 }
 .xdac-client-form input[type=text]::-webkit-input-placeholder,
 .xdac-client-form input[type=email]::-webkit-input-placeholder,
@@ -152,6 +152,19 @@ body {
 .xdac-client-form input[type=submit].xdac-submit-form::-moz-focus-inner {
     border: 0;
     outline: none;
+}
+.xdac-client-form div.error{
+    position: relative;
+}
+.xdac-client-form div.error .xdac-client-errors{
+    position: absolute;
+    left: calc( 50% - 160px );
+    bottom: -10px;
+}
+.xdac-client-form div.error input[type=text],
+.xdac-client-form div.error input[type=email],
+.xdac-client-form div.error input[type=password]{
+    background-color: #b58f8f;
 }
 /*================== END ALL STYLES =================*/
 /*================== START ERRORS AND MESSAGES STYLES =================*/
