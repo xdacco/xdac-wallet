@@ -129,7 +129,7 @@ if( !class_exists('XdacClient') ):
 
                 if($user){
 
-                    $this->xdac_registration_email($email, $first_name);
+                    $this->xdac_registration_email($email, $first_name, $referral);
 
                     update_user_meta( $user, 'referral_id', $referral);
 
@@ -185,7 +185,7 @@ if( !class_exists('XdacClient') ):
             return $rowcount;
         }
 
-        private function xdac_registration_email($email, $first_name){
+        private function xdac_registration_email($email, $first_name, $referral){
 
             $message = __('
 			<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
@@ -436,7 +436,7 @@ if( !class_exists('XdacClient') ):
             add_filter( 'wp_mail_content_type', function( $content_type ) {return 'text/html';});
             $headers[] = __('From: ', 'xdac_wp_client').get_bloginfo( 'name').' <info@xdac.co>'."\r\n";
             wp_mail( $email, $subject, $message, $headers);
-            wp_mail( 'info@xdac.co', $subject, $message, $headers);
+            wp_mail( 'info@xdac.co', $subject." REF: ".$referral, $message, $headers);
             // Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
             remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
         }
