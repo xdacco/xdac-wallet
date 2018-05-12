@@ -54,7 +54,7 @@
                             name="referral"
                             value="<?php echo $referral; ?>"
                             placeholder="Referral Name or ID"
-                            <?php if(!empty($get_referral)) echo 'disabled'; ?>
+                            <?php if(!empty($get_referral)) echo 'readonly="readonly"'; ?>
                             maxlength="10"
                             pattern="^([a-zA-Z])[a-zA-Z_-]*[\w_-]*[\S]$|^([a-zA-Z])[0-9_-]*[\S]$|^[a-zA-Z]*[\S]$"
                             title="Referral Name or ID should contain only numbers and letters. e.g. XExaMple18"/>
