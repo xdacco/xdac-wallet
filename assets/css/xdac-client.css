@@ -38,7 +38,7 @@ body {
     display: inline-block;
     border: 1px solid #019bdb;
     float: left;
-    line-height: 45px;
+    line-height: 40px;
 }
 .tabs-login-register ul li>a {
     padding: 0px 30px;
@@ -97,7 +97,7 @@ body {
 .xdac-client-form input[type=email],
 .xdac-client-form input[type=password] {
     width: 374px;
-    height: 54px;
+    height: 50px;
     background-color: #222836;
     color: #ffffff;
     border-radius: 46px 46px 46px 46px;
@@ -110,7 +110,7 @@ body {
 .xdac-client-form input[type=text],
 .xdac-client-form input[type=email],
 .xdac-client-form input[type=password] {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     outline: none;
 }
 .xdac-client-form input[type=text]::-webkit-input-placeholder,
@@ -139,7 +139,7 @@ body {
 }
 .xdac-client-form input[type=submit].xdac-submit-form {
     width: 374px;
-    height: 56px;
+    height: 50px;
     color: #ffffff;
     font-size: 1em;
     background-color: #019bdb;
@@ -148,6 +148,10 @@ body {
     -webkit-border-radius: 46px 46px 46px 46px;
     border: 0;
     outline: none;
+}
+.xdac-client-form input[type=submit]:hover {
+	border: 2px solid #019bdb;
+	background-color: #292c3b;
 }
 .xdac-client-form input[type=submit].xdac-submit-form::-moz-focus-inner {
     border: 0;
