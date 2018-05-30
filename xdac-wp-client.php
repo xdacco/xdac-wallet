@@ -669,6 +669,11 @@ if( !class_exists('XdacClient') ):
                         "We don't have any users with that email address. <br/> Maybe you used a different one when signing up?",
                         'xdac_wp_client'
                     );
+                case 'invalid_email':
+                    return __(
+                        "This email doesn't exist. Please register first",
+                        'xdac_wp_client'
+                    );
                 case 'incorrect_password':
                     return __(
                         "The password you entered wasn't quite right.",
@@ -716,7 +721,7 @@ if( !class_exists('XdacClient') ):
 
                 if ( isset( $_REQUEST['login'] ) ) {
                     $error_codes = explode( ',', $_REQUEST['login'] );
-                    foreach ( $error_codes as $code ) {
+                    foreach ($error_codes as $code) {
                         $login_errors []= $this->get_error_message( $code );
                     }
                 }
